@@ -8,15 +8,10 @@ using UnityEngine.VR;
     public class RotationControl : MonoBehaviour
     {
         [SerializeField] private float m_Damping = 0.2f;        // Used to smooth the rotation of the transform.
-        [SerializeField] private float m_MaxYRotation = 20f;    // The maximum amount the transform can rotate around the y axis.
-        [SerializeField] private float m_MinYRotation = -20f;   // The maximum amount the transform can rotate around the y axis in the opposite direction.
+        [SerializeField] private float m_MaxYRotation = 0f;    // The maximum amount the transform can rotate around the y axis.
+        [SerializeField] private float m_MinYRotation = 0f;   // The maximum amount the transform can rotate around the y axis in the opposite direction.
 
         private const float k_ExpDampCoef = -20f;               // Coefficient used to damp the rotation.
-
-        [SerializeField]
-        GameObject cameraShell;
-        [SerializeField]
-        GameObject directionChild;
 
 
     private void Update()
@@ -30,15 +25,15 @@ using UnityEngine.VR;
             eulerRotation.y = InputTracking.GetLocalRotation(VRNode.Head).eulerAngles.z;
 
             // Add 360 to the rotation so that it can effectively be clamped.
-            if (eulerRotation.y < 270)
-                eulerRotation.y += 360;
+            //if (eulerRotation.y < 270)
+                //eulerRotation.y += 360;
 
             // Clamp the rotation between the minimum and maximum.
-            eulerRotation.y = Mathf.Clamp(eulerRotation.y, 360 + m_MinYRotation, 360 + m_MaxYRotation);
+            eulerRotation.y = Mathf.Clamp(eulerRotation.y, 0f, 360 + m_MaxYRotation);
 
         // Smoothly damp the rotation towards the newly calculated rotation.
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(eulerRotation),
-            m_Damping * (1 - Mathf.Exp(k_ExpDampCoef * Time.deltaTime)));
+            1);//m_Damping * (1 - Mathf.Exp(k_ExpDampCoef * Time.deltaTime)));
   
         }
     }

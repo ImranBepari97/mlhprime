@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     public int score;
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour {
         } else
         {
             //insert code for game over
+            SceneManager.LoadScene(1);
         }
 	}
 }
