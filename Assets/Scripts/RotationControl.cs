@@ -39,9 +39,6 @@ using UnityEngine.VR;
         // Smoothly damp the rotation towards the newly calculated rotation.
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(eulerRotation),
             m_Damping * (1 - Mathf.Exp(k_ExpDampCoef * Time.deltaTime)));
-        cameraShell.transform.rotation = transform.rotation;
-        directionChild.transform.rotation = transform.rotation;
-
-
-    }
+  
+        }
     }
