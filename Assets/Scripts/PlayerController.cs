@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     [SerializeField]
     float speed;
-    Transform directionT;
+    [SerializeField]
+    float turnSpeed;
     [SerializeField]
     GameObject cameraShell;
     [SerializeField]
@@ -21,14 +22,15 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        cameraShell.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
-        directionChild.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
+      
 
     }
 
     void FixedUpdate()
     {
         rb.AddForce(directionChild.transform.forward * speed);
+        cameraShell.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed, 0);
+        directionChild.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed, 0);
 
     }
 }
