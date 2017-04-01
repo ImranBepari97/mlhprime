@@ -13,8 +13,13 @@ using UnityEngine.VR;
 
         private const float k_ExpDampCoef = -20f;               // Coefficient used to damp the rotation.
 
+        [SerializeField]
+        GameObject cameraShell;
+        [SerializeField]
+        GameObject directionChild;
 
-        private void Update()
+
+    private void Update()
         {
             // Store the Euler rotation of the gameobject.
             var eulerRotation = transform.rotation.eulerAngles;
@@ -22,7 +27,7 @@ using UnityEngine.VR;
             // Set the rotation to be the same as the user's in the y axis.
             eulerRotation.x = 0;
             eulerRotation.z = 0;
-            eulerRotation.y = InputTracking.GetLocalRotation(VRNode.Head).eulerAngles.y;
+            eulerRotation.y = InputTracking.GetLocalRotation(VRNode.Head).eulerAngles.z;
 
             // Add 360 to the rotation so that it can effectively be clamped.
             if (eulerRotation.y < 270)
@@ -31,8 +36,9 @@ using UnityEngine.VR;
             // Clamp the rotation between the minimum and maximum.
             eulerRotation.y = Mathf.Clamp(eulerRotation.y, 360 + m_MinYRotation, 360 + m_MaxYRotation);
 
-            // Smoothly damp the rotation towards the newly calculated rotation.
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(eulerRotation),
-                m_Damping * (1 - Mathf.Exp(k_ExpDampCoef * Time.deltaTime)));
+        // Smoothly damp the rotation towards the newly calculated rotation.
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(eulerRotation),
+            m_Damping * (1 - Mathf.Exp(k_ExpDampCoef * Time.deltaTime)));
+  
         }
     }
