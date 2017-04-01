@@ -6,27 +6,29 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody rb;
     [SerializeField]
-    float forwardMomentum;
+    float speed;
     Transform directionT;
     [SerializeField]
-    GameObject gCamera;
+    GameObject cameraShell;
+    [SerializeField]
+    GameObject directionChild;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        forwardMomentum = 5f;
-        directionT = GetComponentInChildren<Transform>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        gCamera.transform.Rotate(Input.GetAxis("Horizontal") * forwardMomentum * Time.deltaTime , Input.GetAxis("Horizontal") * forwardMomentum * Time.deltaTime, Input.GetAxis("Horizontal") * forwardMomentum * Time.deltaTime);
-        
+        cameraShell.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
+        directionChild.transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
+
     }
 
     void FixedUpdate()
     {
-        rb.AddForce(directionT.forward * forwardMomentum);
+        rb.AddForce(directionChild.transform.forward * speed);
 
     }
 }

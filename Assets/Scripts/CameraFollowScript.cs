@@ -27,6 +27,7 @@ public class CameraFollowScript : MonoBehaviour
     {
         // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
         transform.position = player.transform.position + offset;
-        transform.localEulerAngles = new Vector3(stuckRotation.x, transform.rotation.y, transform.rotation.z);
+       // transform.localEulerAngles = new Vector3(stuckRotation.x, transform.rotation.y, transform.rotation.z);
+        //transform.LookAt(player.transform.position);
     }
 }
