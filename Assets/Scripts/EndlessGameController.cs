@@ -7,6 +7,7 @@ public class EndlessGameController : MonoBehaviour
     public bool playing;
   //  public FloorTile currentTile;
     public GameObject floor_1;
+    public Transform floor_pos;
     private Transform previous;
     private Transform next;
     
@@ -41,6 +42,9 @@ public class EndlessGameController : MonoBehaviour
     public void createNextTile()
     {
         next.position += new Vector3(0, 0, 20.0f);
+
+
+        Vector3 p1 = transform.position;
         Instantiate(floor_1, next);
         //   currentTile = (FloorTile) Instantiate(currentTile, currentTile.next.transform.position, currentTile.next.transform.rotation);
         //   Transform forward = null;
