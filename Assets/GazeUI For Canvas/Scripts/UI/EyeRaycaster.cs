@@ -97,7 +97,9 @@ public class EyeRaycaster : MonoBehaviour
 					endFocusTime = Time.time + loadingTime;
 				}
 
-				progress = Mathf.Lerp(0, 1, (Time.time - endFocusTime) / loadingTime * 2);
+                target.GetComponent<Button>().onClick.Invoke();
+
+                progress = Mathf.Lerp(0, 1, (Time.time - endFocusTime) / loadingTime * 2);
 
 				indicatorFillRawImage.color = Color.Lerp(Color.white, Color.clear, curve.Evaluate(progress));
 				centerRawImage.color = Color.Lerp(activeColor, Color.gray, curve.Evaluate(progress));
