@@ -42,7 +42,7 @@ public class EyeRaycaster : MonoBehaviour
 	{
 		// Centre of the screen
 		PointerEventData pointer = new PointerEventData(EventSystem.current);
-		pointer.position = new Vector2(Screen.width / 2, Screen.height / 2);
+		pointer.position = new Vector2(VRSettings.eyeTextureWidth / 2, VRSettings.eyeTextureHeight / 2);
 		pointer.button = PointerEventData.InputButton.Left;
 
 		List<RaycastResult> raycastResults = new List<RaycastResult>();
