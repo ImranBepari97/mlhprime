@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.VR;
+using UnityEngine.SceneManagement;
 
 public class EyeRaycaster : MonoBehaviour
 {
@@ -97,7 +98,7 @@ public class EyeRaycaster : MonoBehaviour
 					endFocusTime = Time.time + loadingTime;
 				}
 
-                target.GetComponent<Button>().onClick.Invoke();
+                SceneManager.LoadScene("Stage1");
 
                 progress = Mathf.Lerp(0, 1, (Time.time - endFocusTime) / loadingTime * 2);
 
