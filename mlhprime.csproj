@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GazeUI For Canvas\Scripts\UI\EyeRaycaster.cs" />
+    <Compile Include="Assets\GoalScript.cs" />
     <Compile Include="Assets\Lava_Flowing_Shader\Scripts\ScrollingUVs_Layers.cs" />
     <Compile Include="Assets\Scripts\CameraFollowScript.cs" />
     <Compile Include="Assets\Scripts\DeathAreaScript.cs" />
