@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndlessGameController : MonoBehaviour
@@ -9,8 +7,8 @@ public class EndlessGameController : MonoBehaviour
     public bool playing;
   //  public FloorTile currentTile;
     public GameObject floor_1;
-    public Transform next;
     private Transform previous;
+    private Transform next;
     
 
 
@@ -18,6 +16,7 @@ public class EndlessGameController : MonoBehaviour
     void Start()
     {
         playing = true;
+        next = floor_1.transform;
     }
 
     // Update is called once per frame
@@ -41,11 +40,13 @@ public class EndlessGameController : MonoBehaviour
 
     public void createNextTile()
     {
+        next.position += new Vector3(0, 0, 20.0f);
+        Instantiate(floor_1, next);
         //   currentTile = (FloorTile) Instantiate(currentTile, currentTile.next.transform.position, currentTile.next.transform.rotation);
         //   Transform forward = null;
         //  forward.position = floor_1.transform.position + new Vector3(0f,0f,7.0f);
-        createTile(next);
-        next.position = next.position + new Vector3(0f, 0f, 7.0f);
+        //createTile(next);
+//next.position = next.position + new Vector3(0f, 0f, 7.0f);
     }
 
 
