@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
         } else
         {
             //insert code for game over
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("EndGame");
         }
 	}
 }
