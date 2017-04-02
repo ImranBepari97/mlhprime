@@ -24,7 +24,7 @@ public class FloorTile : MonoBehaviour {
 
         if (timeLeft < 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 	}
 

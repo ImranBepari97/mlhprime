@@ -7,8 +7,10 @@ public class EndlessGameController : MonoBehaviour
 {
     public int score;
     public bool playing;
-    public FloorTile currentTile;
+  //  public FloorTile currentTile;
+    public GameObject floor_1;
     public Transform next;
+    private Transform previous;
     
 
 
@@ -32,10 +34,18 @@ public class EndlessGameController : MonoBehaviour
         }
     }
 
+    void createTile(Transform temp)
+    {
+        Instantiate(floor_1, temp);
+    }
+
     public void createNextTile()
     {
-
-        currentTile = (FloorTile) Instantiate(currentTile, currentTile.next.transform.position, currentTile.next.transform.rotation);
+        //   currentTile = (FloorTile) Instantiate(currentTile, currentTile.next.transform.position, currentTile.next.transform.rotation);
+        //   Transform forward = null;
+        //  forward.position = floor_1.transform.position + new Vector3(0f,0f,7.0f);
+        createTile(next);
+        next.position = next.position + new Vector3(0f, 0f, 7.0f);
     }
 
 
