@@ -7,7 +7,10 @@ public class EndlessGameController : MonoBehaviour
 {
     public int score;
     public bool playing;
+    public FloorTile currentTile;
+    public Transform next;
     
+
 
     // Use this for initialization
     void Start()
@@ -28,4 +31,12 @@ public class EndlessGameController : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
+
+    public void createNextTile()
+    {
+
+        currentTile = (FloorTile) Instantiate(currentTile, currentTile.next.transform.position, currentTile.next.transform.rotation);
+    }
+
+
 }
